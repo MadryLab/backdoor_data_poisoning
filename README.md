@@ -11,11 +11,15 @@ backdoor attacks with spectral signatures.
 
 
 The simplest usage is to change the "data" section of the config.json file.
-Method supports 'pixel', 'ell', and 'pattern'.
-An eps number of clean label images are marked according to the position and
-color values and mislabelled as the target label.
-Percentile indicates how many images will be kept after the scores are computed.
-The compute corr file will load the latest checkpoint from the given output 
+
+- `poison_method` can be `pixel`, `pattern`, or `ell`
+- `poison_eps` refers to how many corrupted images are added
+- `clean_label` refers to the class of images to which a mark is added
+- `target_label` refers to the label assigned to corrupted images
+- `position` and `color` are the parameters for the backdoor trigger
+- `percentile` represents how many images to keep
+
+The `compute_corr.py` file will load the latest checkpoint from the given output 
 directory in the config file and perform the spectral signature detection.
 The code will print (to stdout) the top singular values with and without
 the corrupted inputs, as well as the number of corrupted images removed as
