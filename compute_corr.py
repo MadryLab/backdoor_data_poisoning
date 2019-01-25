@@ -43,10 +43,6 @@ def compute_corr(config):
 
     # Setting up the Tensorboard and checkpoint outputs
     model_dir = config.model.output_dir
-    grads = tf.gradients(model.xent, tf.trainable_variables())
-    grads_flat = [tf.reshape(grad, shape=[-1]) for grad in grads]
-    all_grads = tf.concat(grads_flat, axis = 0)
-    #cur_op = model.pre_pool
 
     saver = tf.train.Saver(max_to_keep=3)
 
@@ -56,7 +52,6 @@ def compute_corr(config):
         print('Dataset Size: ', len(dataset.train_data.xs))
 
         sess.run(tf.global_variables_initializer())
-        training_time = 0.0
             
         latest_checkpoint = tf.train.latest_checkpoint(model_dir)
         if latest_checkpoint is not None:

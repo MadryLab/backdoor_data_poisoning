@@ -170,7 +170,7 @@ if __name__ == "__main__":
     config_dict = utilities.get_config(args.config)
     config = utilities.config_to_namedtuple(config_dict)
 
-    model = models.resnet.Model(config.model)
+    model = resnet.Model(config.model)
 
     model_dir = config.model.output_dir
 
